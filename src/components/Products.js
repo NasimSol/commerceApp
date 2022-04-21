@@ -60,7 +60,7 @@ function Products() {
     return (
       
       <div className='buttons mb-4 d-flex justify-content-center '>
-        {/*we can renderproduct(results) instead of setResults*/}
+        {/* comment: we can renderproduct(results) instead of setResults*/}
         <button className='btn btn-outline-dark btn-lg ' onClick={() => { setResults(filterdata) }}>ALL </button>
         <button className='btn btn-outline-dark ms-2 btn-lg' onClick={() => showproduct("men's clothing")}>men's clothing</button>
         <button className='btn btn-outline-dark ms-2 btn-lg' onClick={() => showproduct("women's clothing")}>women's clothing</button>
