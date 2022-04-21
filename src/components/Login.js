@@ -10,7 +10,7 @@ function Login() {
         <i className="fa fa-sign-in me-1" ></i>Login
       </button>
 
-      {/*<!-- Modal -->*/}
+      {/*<!-- Modal use bootstrap for it -->*/}
       <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog">
           <div class="modal-content">
