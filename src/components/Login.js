@@ -1,12 +1,18 @@
-import React from 'react';
+import React,{ useRef,useEffect} from 'react';
 
 import "bootstrap/dist/js/bootstrap.min.js";{/*i dont know why i add this to my project it works*/}
 
 function Login() {
+   const refEmailInput = useRef(null);
+  const renderFocus = () => {
+    
+      refEmailInput.current.focus();
+  };
+ 
   return (
     <>
       { /* <!-- Button trigger modal -->*/}
-      <button type="button" className="btn btn-primary ms-2" data-bs-toggle="modal" data-bs-target="#exampleModal">
+      <button  type="button" className="btn btn-primary ms-2" data-bs-toggle="modal" data-bs-target="#exampleModal">
         <i className="fa fa-sign-in me-1" ></i>Login
       </button>
 
@@ -19,13 +25,13 @@ function Login() {
               <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-              <button className='btn btn-primary mb-2 w-100'><i className="fa fa-google me-1" ></i>sign in with google</button>
+              <button onClick={renderFocus} className='btn btn-primary mb-2 w-100'><i className="fa fa-google me-1" ></i>sign in with google</button>
               <button className='btn btn-primary mb-4 w-100'><i className="fa fa-twitter me-1" ></i>sign in with facwbook</button>
               
               <form>
                 <div class="mb-3">
                   <label for="exampleInputEmail1" class="form-label">Email address</label>
-                  <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" />
+                  <input ref={refEmailInput} placeholder='Enter your Email' class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" />
                   <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
                 </div>
                 <div class="mb-3">
