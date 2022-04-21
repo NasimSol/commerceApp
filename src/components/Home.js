@@ -1,25 +1,60 @@
 import React from 'react';
-import  back  from '../assets/1022-6000x3376.jpg';
+import picslide1 from '../assets/71YXzeOuslL._AC_UY879_.jpg';
+import picslide2 from '../assets/71YAIFU48IL._AC_UL640_QL65_ML3_.jpg';
+import picslide3  from '../assets/81QpkIctqPL._AC_SX679_.jpg';
 import Products from './Products';
 
 function Home() {
   return (
-    <div className='hero'>
-      <div className="card border-0 text-white">
-        <img src={back} className="card-img" alt="back" height={'550px'} />
-      <div className="card-img-overlay d-flex 
-        align-items-center">
-           <div className="container">
-          <h5 className="card-title display-3 fw-bolder mb-0">NEW SEASON ARRIVALS</h5>
-          <p className="card-text lead fs-3">CHECK OUT ALL TRENDS</p>
-          <div />
+   <div className='hero'>
+     <div className="card border-0 text-white">
+
+        <div id="carouselExampleIndicators" className="carousel slide" data-bs-ride="carousel">
+          {/*button in bottom of image for move slides;*/}
+         <div className="carousel-indicators">
+           <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" className="active" aria-current="true" aria-label="Slide 1" ></button>
+           <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+           <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+          </div>
+          {/*carousel for sliding somthing*/}
+
+      <div className="carousel-inner">
+            <div className="carousel-item active">
+              {/*by adding this class we can bring this to center in page*/}
+          <img src={picslide1} class="rounded mx-auto d-block float-left" alt="back" height={'550px'} style={{backgroundImage:'cover'}}  /> 
         </div>
+        <div class="carousel-item">
+          <img src={picslide2} className="d-block w-100" alt="back" height={'550px'} /> 
+        </div>
+        <div className="carousel-item">
+          <img src={picslide3} className="d-block w-100" alt="back" height={'550px'}  /> 
+        </div>
+          </div>
+          
+          {/*button for move slides  which located in aside*/}
+      <button className="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+        <span className="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span className="visually-hidden">Previous</span>
+      </button>
+      <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+      </button>
+    </div>
+
+      {/*text in site*/}
+      <div className="card-img-overlay d-flex align-items-center ">
+          <div className="container" style={{color:'black'}}>
+            <h5 className="card-title display-3 fw-bolder mb-0" >NEW SEASON ARRIVALS</h5>
+             <p className="card-text lead fs-3 fw-bolder">CHECK OUT ALL TRENDS</p>
+          <div />
       </div>
+     </div>
       
     </div>
       <Products />
-      </div>
+   </div>
   );
 }
 
-export default Home
+export default Home;
