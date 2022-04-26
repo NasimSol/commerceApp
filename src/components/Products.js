@@ -2,14 +2,17 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 
 import Skeleton from 'react-loading-skeleton'
-import { Link ,useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import { motion } from "framer-motion";
 
 function Products() {
   const [results, setResults] = useState([]);
    
   const [filterdata, setFilterdata] = useState([]);
   const [loading, setLoading] = useState(false);
-
+  //variable for scale when mouse over on it
+  const [hover, setHover] = useState(false);
+  console.log(hover);
 {/*receive information and set them to the result and filterdata*/}
   useEffect(() => {
     const search = async () => {
@@ -32,15 +35,21 @@ function Products() {
   const renderProduct = results.map((result) => (
   
        
-    <div className="card p-4  text-center" key={result.id} style={{ width: '18rem' }}>
-      <img src={result.image} className="card-img-top mh-100" style={{ height: '250px' }} />
+    <motion.div className="card p-4  text-center" key={result.id}
+      style={{ width: '18rem' }}
+      whileHover={{
+        boxShadow:'rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px'
+       
+      }}
+      >
+      <img  src={result.image} className="card-img-top mh-100" style={{ height: '250px' }} />
       <div className="card-body ">
         <h5 className="card-title fw-bolder">{result.title.substring(0, 12)}...
         </h5>
         <p className="card-text lead fw-bolder">${result.price}</p>
         <Link to={`/products/${result.id}`} className="btn btn-outline-dark">Buy Now</Link>
       </div>
-    </div>
+    </motion.div>
       
 
   )
@@ -48,9 +57,10 @@ function Products() {
   {/*this code is for show load in page*/}
   const showLoading = () => {
     return (
-      <>
-        ...loading
-      </>
+      <div class="d-flex align-items-center">
+        <strong>Loading...</strong>
+        <div class="spinner-border ms-auto" role="status" aria-hidden="true"></div>
+      </div>
       
     );
   }
@@ -61,11 +71,11 @@ function Products() {
       
       <div className='buttons mb-4 d-flex justify-content-center '>
         {/* comment: we can renderproduct(results) instead of setResults*/}
-        <button className='btn btn-outline-dark btn-lg ' onClick={() => { setResults(filterdata) }}>ALL </button>
-        <button className='btn btn-outline-dark ms-2 btn-lg' onClick={() => showproduct("men's clothing")}>men's clothing</button>
-        <button className='btn btn-outline-dark ms-2 btn-lg' onClick={() => showproduct("women's clothing")}>women's clothing</button>
-        <button className='btn btn-outline-dark ms-2 btn-lg' onClick={() => showproduct('jewelery')}>jewelery</button>
-        <button className='btn btn-outline-dark ms-2 btn-lg' onClick={() => showproduct('electronics')}>electronics</button>
+        <motion.button whileHover={{scale:1.2}} className='btn btn-outline-dark btn-lg ' onClick={() => { setResults(filterdata) }}>All</motion.button> 
+        <motion.button whileHover={{scale:1.2}} className='btn btn-outline-dark ms-2 btn-lg' onClick={() => showproduct("men's clothing")}>men's clothing</motion.button>
+        <motion.button whileHover={{scale:1.2}} className='btn btn-outline-dark ms-2 btn-lg' onClick={() => showproduct("women's clothing")}>women's clothing</motion.button>
+        <motion.button whileHover={{scale:1.2}} className='btn btn-outline-dark ms-2 btn-lg' onClick={() => showproduct('jewelery')}>jewelery</motion.button>
+        <motion.button whileHover={{scale:1.2}} className='btn btn-outline-dark ms-2 btn-lg' onClick={() => showproduct('electronics')}>electronics</motion.button>
       </div>
     );
   };
