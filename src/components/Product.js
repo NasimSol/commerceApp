@@ -5,7 +5,9 @@ import { connect } from "react-redux";
 import { useParams, Link, NavLink } from "react-router-dom";
 import axios from "axios";
 import Skeleton from 'react-loading-skeleton';
-import { addCart,deleteProduct } from '../redux/actions';
+import { addCart, deleteProduct } from '../redux/actions';
+import ReactImageMagnify from 'react-image-magnify';
+import { image } from 'fontawesome';
 
 
 
@@ -54,37 +56,56 @@ function Product(props) {
       
        );
       
-      
+       
           
     }
-    const rendering = () => {
-      return (
-        <>
+  const rendering = () => {
+    return (
+      <>
             
              
-          <div className="row g-10">
-            <div className="col-md-4">
-              <img src={sequence.image} className="img-fluid rounded-start m-2" style={{ width: '90%' }} />
-            </div>
-            <div className="col-md-8" style={{ lineHeight: 2.5 }}>
-              <div className="card-body">
-                <h4 className="card-text text-uppercase text-black-50 mb-3" style={{ fontSize: '1.2rem' }}>{sequence.category}</h4>
-                <h2 className="card-title fw-bold mb-1 " style={{ fontSize: '1.8rem' }}>{sequence.title}</h2>
+        <div className="row g-10">
+          <div className="col-md-4">
+                  
+            <ReactImageMagnify className="img-fluid rounded-start m-2"  {...{
+              smallImage: {
+                alt: sequence.title,
+                isFluidWidth: true,
+                src: sequence.image,
+                sizes:
+                  "(min-width: 800px) 33.5vw, (min-width: 415px) 50vw, 100vw"
+
+              },
+              largeImage: {
+                src: sequence.image,
+                width: 1200,
+                height: 1800
+              }
+            }} />
+
+            
+            
+            
+          </div>
+          <div className="col-md-8" style={{ lineHeight: 2.5 }}>
+            <div className="card-body">
+              <h4 className="card-text text-uppercase text-black-50 mb-3" style={{ fontSize: '1.2rem' }}>{sequence.category}</h4>
+              <h2 className="card-title fw-bold mb-1 " style={{ fontSize: '1.8rem' }}>{sequence.title}</h2>
                     
-                <p className="card-text mb-4">Rating {sequence.rating && sequence.rating.rate} <i className='fa fa-star'></i></p>
-                <h3 className='fw-bold my-6'>${sequence.price}</h3>
-                <p className='lead'>{sequence.description}</p>
-                <button className='btn btn-outline-dark ms-2 ' onClick={() => addProduct(sequence)} >{cartBtn}</button>
+              <p className="card-text mb-4">Rating {sequence.rating && sequence.rating.rate} <i className='fa fa-star'></i></p>
+              <h3 className='fw-bold my-6'>${sequence.price}</h3>
+              <p className='lead'>{sequence.description}</p>
+              <button className='btn btn-outline-dark ms-2 ' onClick={() => addProduct(sequence)} >{cartBtn}</button>
                  
-                <NavLink to={'/cart'} className='btn btn-dark ms-2'>Go to cart</NavLink>
-              </div>
+              <NavLink to={'/cart'} className='btn btn-dark ms-2'>Go to cart</NavLink>
             </div>
           </div>
+        </div>
             
-        </>
-      );
+      </>
+    );
      
-   }
+  };
     
   return (
     
