@@ -1,11 +1,10 @@
 import React, { useRef, useEffect, useState } from 'react';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import Joi from "joi-browser";//for validation
-
 import "bootstrap/dist/js/bootstrap.min.js";{/*i dont know why i add this to my project it works*/}
 
 function Login() {
+  //use for reach on email node;
   const refEmailInput = useRef(null);
   //when we click on sign it with google focus on email;
   const renderFocus = () => {
@@ -20,42 +19,23 @@ function Login() {
   {/*<!--variable for active checkbox and button when we complete form-->*/ }
   const [accuracy, setAccuracy] = useState(true);
   const [butt, setButt] = useState(true);
+  
   {/*<!--variable for error validation in form-->*/ }
-  //const [errors, setErrors] = useState({});
+  const [errors, setErrors] = useState({});
+  const [isvalid, setIsvalid] = useState(true);
 
-  /* const schema ={
-    email: Joi.string().email().required(),
-    password: Joi.number().min(100000).max(999999).required(),
-    
-   };*/
-  
+  //regex for validate
+   const emailRegex =   /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
+  const passwordRegex = /^(?=.*[0-9])(?=.{8,}).*$/;
  
-  /*const validate = () => {
-    const result = Joi.validate(value, schema, { abortEarly: false });
-    const { error } = result;
-    if (!error) { return null; } else {
-
-      const errorData = {};
-      for (let item of error.details) {
-        errorData[item.path[0]] = item.message;
-      }
-      console.log(errors);
-      setErrors(errorData);
-      return errorData;
-     
-    }
-  };*/
-
-  
-  
   {/*<!--function complete email, password and active checkbox if we have input  -->*/ }
-  const onValidForm = (e) => {
-     
+  const handleChange = (e) => {
      setValue({
        ...value,
        [e.target.name]: e.target.value
        
      });
+    //with this condition can able checkbox and button
      if (value.email.trim() !== '' && value.password !== ''&&value.password.length===6) {
        setAccuracy(!accuracy);
      }
@@ -63,20 +43,44 @@ function Login() {
   }
    {/*<!--function for active button-->*/ }
   const onCheckValue = (e) => setButt(!butt);
+
+  //function for simple validate 
+  const validate = () => {
+    const errs = {};
+    if (!emailRegex.test(value.email)) {
+      setIsvalid(false);
+    
+      errs.email = 'please enter correct your email'
+    }
+    
+    if (!passwordRegex.test(value.password)) {
+      setIsvalid(false);
+    
+      errs.password = 'please enter correct your password'
+    }
+    
+    return Object.keys(errs) === 0 ? null : errs;
+    
+  
+
+  }
+  //function for submit form
   const onHandleSubmit = (e) => {
     
     e.preventDefault();
+    setErrors(validate());
     
-    /*const result = Joi.validate(value, 
-      schema, { abortEarly: false });
-    console.log(result);*/
-    toast.success("Success Loggin !", {
-    color: 'red',
-      position:"top-right",
-      autoClose: 2000
-    });
-    
-  }
+    console.log(errors);
+    if (!isvalid) {return;
+  } else {
+      return  toast.success("Success Loggin !", {
+        backgroundColor: 'red',
+        position: "top-right",
+        autoClose: 2000
+     
+      });
+    };
+    }
      
 
    
@@ -103,12 +107,19 @@ function Login() {
               <form>
                 <div className="mb-3">
                   <label htmlFor="exampleInputEmail1" className="form-label">Email address</label>
-                  <input value={value.email} onChange={(e) => onValidForm(e)} name='email' ref={refEmailInput} placeholder='Enter your Email' className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" />
+                  <input value={value.email} onChange={(e) => handleChange(e)} name='email' ref={refEmailInput} placeholder='Enter your Email' className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" />
                   <div id="emailHelp" className="form-text">We'll never share your email with anyone else.</div>
+                {/*<!--for warning-->*/}
+                    {errors.email && <div class="alert alert-danger" role="alert">{errors.email}</div>}              
                 </div>
                 <div className="mb-3">
                   <label htmlFor="exampleInputPassword1" className="form-label">Password</label>
-                  <input value={value.password} onChange={(e) => onValidForm(e)} name='password' type="password" className="form-control" id="exampleInputPassword1" />
+                  <input value={value.password} onChange={(e) => handleChange(e)} name='password' type="password" className="form-control" id="exampleInputPassword1" />
+                  <div id="passwordHelp" className="form-text">
+                    password must contain at least 1 numeric character and must be eight characters or longer
+                  </div>
+                  {errors.password && <div class="alert alert-danger" role="alert">{errors.password}</div>}              
+
                 </div>
                 <div className="mb-3 form-check">
                   <input onChange={(e) => onCheckValue(e)} name='accuracy' type="checkbox" className="form-check-input" id="exampleCheck1" disabled={accuracy} />
@@ -117,9 +128,10 @@ function Login() {
                 <button onClick={(e) => onHandleSubmit(e) } type="submit" className="btn btn-outline-primary w-100" disabled={butt}>Loggin</button>
                 
               </form>
-              <ToastContainer
+            {isvalid && <ToastContainer
                  style={{ width: "500px" }}
-                 />
+              />
+              }
             </div>
       
           </div>
