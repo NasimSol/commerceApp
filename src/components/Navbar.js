@@ -5,6 +5,7 @@ import { connect } from 'react-redux';
 import handleCart from '../redux/reducers/handleCart';
 import Login from './Login';
 import Register from './Register';
+import { motion } from "framer-motion";
 
 
 const Navbar = ({handleCart}) => {
@@ -22,19 +23,19 @@ const Navbar = ({handleCart}) => {
           {/*The active class is applied to the navigation element the user is currently viewing.*/}
           <div className="collapse navbar-collapse" id="navbarSupportedContent">
             <ul className="navbar-nav mx-auto mb-2 mb-lg-0">
-              <li className="nav-item ">
-                <Link className="nav-link active" aria-current="page" to="/" exact>Home</Link>
-              </li>
-              <li className="nav-item">
+              <motion.li whileHover={{scale:1.2, originX:0}} className="nav-item mx-4">
+                <Link  className="nav-link active" aria-current="page" to="/" exact>Home</Link>
+              </motion.li>
+              <motion.li whileHover={{scale:1.2, originX:0}}  className="nav-item mx-4">
                 <Link className="nav-link" to="/products">Products</Link>
-              </li>
-              <li className="nav-item">
+              </motion.li>
+              <motion.li whileHover={{scale:1.2, originX:0}}  className="nav-item mx-4">
                 <Link className="nav-link" to="/about">About</Link>
-              </li>
+              </motion.li>
         
-              <li className="nav-item">
+              <motion.li whileHover={{scale:1.2, originX:0}}  className="nav-item mx-4">
                 <Link className="nav-link" to="/contact">Contact</Link>
-              </li>
+              </motion.li>
             </ul>
             <div className='buttons '>
               
