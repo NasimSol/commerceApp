@@ -7,7 +7,7 @@ import { motion } from "framer-motion";
 
 function Products() {
   const [results, setResults] = useState([]);
-   
+  const navigate = useNavigate (); 
   const [filterdata, setFilterdata] = useState([]);
   const [loading, setLoading] = useState(false);
   //variable for scale when mouse over on it
@@ -31,12 +31,12 @@ function Products() {
     
   }, [])
   {/*use this function for maping in result and show all of them*/ }
+  
  
   const renderProduct = results.map((result) => (
-  
-       
-    <motion.div className="card p-4  text-center" key={result.id}
-      style={{ width: '18rem' }}
+   <motion.div className="card p-4  text-center" key={result.id}
+      onClick={(e) => navigate(`/products/${result.id}`)}//use for navigation  when click on it 
+      style={{ width: '18rem',  cursor:'pointer'}}
       whileHover={{
         boxShadow:'rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px'
        
