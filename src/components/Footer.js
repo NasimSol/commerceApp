@@ -20,7 +20,7 @@ const footer = () => {
 					<p><span className="text-color">Monday: </span>Closed</p>
 					<p><span className="text-color">Tue-Wed :</span> 9:Am - 10PM</p>
 					<p><span className="text-color">Thu-Fri :</span> 9:Am - 10PM</p>
-					<p><span clasNames="text-color">Sat-Sun :</span> 5:PM - 10PM</p>
+					<p><span className="text-color">Sat-Sun :</span> 5:PM - 10PM</p>
 				</div>
 				<div className="col-lg-3 col-md-6">
 					<h3>Contact</h3>

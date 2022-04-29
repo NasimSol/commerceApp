@@ -1,0 +1,52 @@
+{
+  "Language": "App language",
+  "welcome": "Welcome",
+  
+  "Home":"Home",
+  "Products":"Products",
+  "About":"About",
+  "Contact":"Contact",
+  "Cart":"Cart",
+  "Login":"Login",
+ "collection" :"LA COLLECTION",
+ "sign in with google":"sign in with google",
+"sign in with facebook":"sign in with facebook",
+"Email address":"Email address",
+
+"Enter your Email":"Enter your Email",
+"warning":"We'll never share your email with anyone else.",
+"password":"Password",
+"message's password":"password must contain at least 1 numeric character and must be eight characters or longer",
+"check me out":"Check me out",
+"erroremail":"please enter correct your email",
+"errorpassword":"please enter correct your password",
+"Success Loggin !":"Success Loggin !",
+
+
+"register":"Register",
+"username":"Username",
+ "errorusername":"please enter your username",
+
+
+ "massageimage":"NEW SEASON ARRIVALS",
+ "alltrends":"CHECK OUT ALL TRENDS",
+
+
+"add to cart": "Add to cart",
+"delete from cart":"Delete from cart",
+"go to cart":"Go to cart",
+
+
+"latest":"Latest Products",
+"buy":"Buy Now",
+"all":"All",
+"men":"Men's clothing",
+"women":"Women's clothing",
+"jewelery":"Jewelery",
+"electronics":"Electronics",
+
+
+"about Us":"About Us",
+"contact":"Contact Us",
+"text":"Lorem ipsum dolor sit amet, Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi. consectetuer adipiscing elit, sed diam nonummy nibh Lorem ipsum dolor sit amet, Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi. consectetuer adipiscing elit, sed diam nonummy nibh "
+}

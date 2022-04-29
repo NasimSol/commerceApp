@@ -8,26 +8,27 @@ import Skeleton from 'react-loading-skeleton';
 import { addCart, deleteProduct } from '../redux/actions';
 import ReactImageMagnify from 'react-image-magnify';
 import { image } from 'fontawesome';
+import {useTranslation} from 'react-i18next'
 
 
 
 function Product(props) {
-
+  const { t } = useTranslation();
   const { id } = useParams();//this name here shoul be exact with name in Route in App//
   const [sequence, setSquence] = useState([]);
-  const [cartBtn, setCartBtn] = useState('Add to cart')
+  const [cartBtn, setCartBtn] = useState(t('add to cart'));
   
   const [load, setLoad] = useState(false);//use this for show loading in screen
  // const dispatch = useDispatch(); 
 
   const addProduct = (sequence) => {
    
-    if (cartBtn === 'Add to cart') {
+    if (cartBtn === t('add to cart')) {
       props.addCart(sequence);//we want add product to cart with actions in redux
-      setCartBtn('Delete from cart');// use this for change writting in button
+      setCartBtn(t('delete from cart'));// use this for change writting in button
     } else {
       props.deleteProduct(sequence);
-      setCartBtn('Add to cart'); 
+      setCartBtn(t('add to cart')); 
     };
   }
   // better way for this is use redux instead of get information again
@@ -60,6 +61,7 @@ function Product(props) {
           
     }
   const rendering = () => {
+    
     return (
       <>
             
@@ -97,7 +99,7 @@ function Product(props) {
               <p className='lead'>{sequence.description}</p>
               <button className='btn btn-outline-dark ms-2 ' onClick={() => addProduct(sequence)} >{cartBtn}</button>
                  
-              <NavLink to={'/cart'} className='btn btn-dark ms-2'>Go to cart</NavLink>
+              <NavLink to={'/cart'} className='btn btn-dark ms-2'>{t('go to cart')}</NavLink>
             </div>
           </div>
         </div>

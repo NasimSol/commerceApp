@@ -9,6 +9,8 @@ import Product from './Product';
 import Cart from './Cart';
 import Register from './Register';
 import Login from './Login';
+import Footer from './Footer';
+
 //redirect
 
 const App= () => {
@@ -26,7 +28,8 @@ const App= () => {
           <Route path="/register" element={<Register />} />
           <Route path='/login' element={<Login />} />
         </Routes>
-    </Router>
+      </Router>
+      <Footer/>
       
    </React.Fragment>
   )

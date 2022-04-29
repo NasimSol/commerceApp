@@ -19,18 +19,18 @@ function Contact() {
         </div>
         <div className='ms-5 my-4' style={{ width: '80%', height: '200%' }} >
           <div className=" my-4">
-            <label for="exampleFormControlInput1" className="form-label">Full Name</label>
+            <label htmlFor="exampleFormControlInput1" className="form-label">Full Name</label>
             <input type="email" className="form-control" id="exampleFormControlInput1" placeholder="nasim sol" />
           </div>
           <div className="my-4">
-            <label for="exampleFormControlInput1" className="form-label">Email address</label>
+            <label htmlFor="exampleFormControlInput1" className="form-label">Email address</label>
             <input type="email" className="form-control" id="exampleFormControlInput2" placeholder="name@example.com" />
           </div>
           <div className="my-4">
-            <label for="exampleFormControlTextarea1" className="form-label">Example textarea</label>
+            <label htmlFor="exampleFormControlTextarea1" className="form-label">Example textarea</label>
             <textarea className="form-control" id="exampleFormControlTextarea1" rows="6"></textarea>
           </div>
-          <div class="col-auto">
+          <div className="col-auto">
             <button type="submit" className="btn btn-primary my-4">Send Massage</button>
           </div>
         </div>

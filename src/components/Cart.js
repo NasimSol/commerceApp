@@ -34,13 +34,13 @@ function Cart( props ) {
         <img src={buy.image} className="card-img-top" />
       </div>
       <div className=" mt-2 py-2 mx-5" >
-        <h className="mb-1 fs-3 fw-bold mt-2">{buy.title}</h>
+        <h1 className="mb-1 fs-3 fw-bold mt-2">{buy.title}</h1>
         <p className="fs-3 fw-bold lead mt-4"> ${buy.price} </p>
         
         
       </div>
       <button type="button"
-        class="btn-close btn-close-black ms-auto p-2 bd-highlight"
+        className="btn-close btn-close-black ms-auto p-2 bd-highlight"
         aria-label="Close"
         onClick={() => closeItem(buy)}
         
@@ -70,7 +70,7 @@ function Cart( props ) {
     return (
       <>
         <div className="  container mt-2 py-2 align-self-center" style={{ backgroundColor: '#ede6e6', height: '200px', lineHeight: '100px' }}>
-          <h className="fs-3 fw-bold">Empty Cart</h>
+          <h1 className="fs-3 fw-bold">Empty Cart</h1>
         </div>
       </>
     );

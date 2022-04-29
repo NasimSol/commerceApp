@@ -1,4 +1,4 @@
-let cart = [];
+
 
 const handleCart = (cart = [], action) => {
     const product = action.payload;

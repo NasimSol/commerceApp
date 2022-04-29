@@ -3,9 +3,12 @@ import picslide1 from '../assets/71YXzeOuslL._AC_UY879_.jpg';
 import picslide2 from '../assets/71YAIFU48IL._AC_UL640_QL65_ML3_.jpg';
 import picslide3  from '../assets/81QpkIctqPL._AC_SX679_.jpg';
 import Products from './Products';
+import { useTranslation } from "react-i18next";
+
 
 
 function Home() {
+  const { t } = useTranslation();
   return (
    <div className='hero'>
      <div className="card border-0 text-white">
@@ -46,8 +49,8 @@ function Home() {
       {/*text in site*/}
       <div className="card-img-overlay d-flex align-items-center ">
           <div className="container" style={{color:'black'}}>
-            <h5 className="card-title display-3 fw-bolder mb-0" >NEW SEASON ARRIVALS</h5>
-             <p className="card-text lead fs-3 fw-bolder">CHECK OUT ALL TRENDS</p>
+            <h5 className="card-title display-3 fw-bolder mb-0" >{t('massageimage')}</h5>
+            <p className="card-text lead fs-3 fw-bolder">{t('alltrends')}</p>
           <div />
       </div>
      </div>
