@@ -21,7 +21,7 @@ const Navbar = ({ handleCart }) => {
   };
   return (
     <div>
-      <nav className="navbar navbar-expand-lg navbar-light bg-white shadow-sm py-3">
+      <nav className="navbar navbar-expand-xxl navbar-light bg-white shadow-sm py-3">
         <div className="container"  >
           <div>
             <Link className="navbar-brand fw-bold fs-4" to="/">{t('collection')}</Link>
