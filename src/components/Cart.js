@@ -10,7 +10,7 @@ function Cart( props ) {
   const closeItem = (item) => {
     props.deleteProduct(item);
   };
-
+  //Use for get data from localstorage in initial
  useEffect(() => {
     const stringfiedBuys = localStorage.getItem("buys");
    const buys = JSON.parse(stringfiedBuys);
