@@ -1,15 +1,27 @@
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
-import { deleteProduct } from '../redux/actions';{/*use actions from redux */}
+import {addCart, deleteProduct,deleteAllProduct } from '../redux/actions';{/*use actions from redux */}
 
 
 function Cart( props ) {
   let buys = props.handleCart;
-  //console.log(buys)
+ 
   {/*use for closing buy located in right side*/}
   const closeItem = (item) => {
-    props.deleteProduct(item);
+    
+    props.deleteAllProduct(item);
   };
+  //function for add and subtract product in button click
+  const addQuantity = (item) => {
+    
+    props.addCart(item);
+  }
+  //
+ const decreaseQuantity = (item) => {
+    
+   props.deleteProduct(item);
+}
+
   //Use for get data from localstorage in initial
  useEffect(() => {
     const stringfiedBuys = localStorage.getItem("buys");
@@ -29,23 +41,42 @@ function Cart( props ) {
 
 // use this help function for show items in cart
   const renderCart = buys.map((buy) =>
-    <div key={buy.id} className="container mt-2 py-2 d-flex flex-row" style={{ backgroundColor: '#ede6e6' }}>
-      <div className="card py-2 mx-2 px-2" style={{ width: '18rem' }}>
-        <img src={buy.image} className="card-img-top" />
-      </div>
-      <div className=" mt-2 py-2 mx-5" >
+    <div key={buy.id} className="container mt-2 py-1 d-flex flex-row border border-2" style={{ backgroundColor: '#faf9f7',width:'75%' }}>
+         
+      <div className="card py-2  " style={{ width: '15rem' }}>
+        <img src={buy.image} className="card-img-top mx-auto" style={{ width: '100%' }} />
+        </div>
+      <div className=" mt-2 py-2 mx-5 d-flex flex-column justify-content-between" >
         <h1 className="mb-1 fs-3 fw-bold mt-2">{buy.title}</h1>
-        <p className="fs-3 fw-bold lead mt-4"> ${buy.price} </p>
+        <p className="fs-4  lead mt-4 ">price of each number:  ${buy.price} </p>
+        <div className='d-flex'>
+        <div className="btn-group" role="group" aria-label="Second group"  >
+            <button type="button" className="btn btn-outline-dark" onClick={() => addQuantity(buy)}>+</button>
+            
+              
+              <button type="button" className="btn btn-outline-dark">{buy.qty} </button>
         
+            {buy.qty === 1 ?
+              <button type="button" className="btn btn-outline-danger" onClick={() => closeItem({...buy, qty: 1 })}><i className="fa fa-trash me-1" ></i></button> :
+              <button type="button" className="btn btn-outline-dark" onClick={() => decreaseQuantity(buy)} > - </button>
+             }
+         
+        
+          </div>
+          <div className='ms-2 fs-4 fw-bold' >${buy.qty*buy.price}</div>
+          </div>
+     
         
       </div>
+      <div></div>
+      
+       
       <button type="button"
         className="btn-close btn-close-black ms-auto p-2 bd-highlight"
         aria-label="Close"
         onClick={() => closeItem(buy)}
         
       ></button>
-      
     </div>
    
   );
@@ -65,6 +96,10 @@ function Cart( props ) {
       
     )
   };
+
+  //use this function for add or minus product in cart
+
+
   //when cart is empty this function run
   const emptyCart = () => {
     return (
@@ -90,4 +125,4 @@ const mapStateToProps = (state) => {
   return { handleCart: state.handleCart };
 };
 
-export default connect(mapStateToProps, { deleteProduct })(Cart); 
+export default connect(mapStateToProps, {addCart, deleteProduct,deleteAllProduct })(Cart); 
