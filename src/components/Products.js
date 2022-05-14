@@ -18,11 +18,12 @@ function Products() {
   useEffect(() => {
     const search = async () => {
       setLoading(true);
-     const {data}= await axios.get('https://fakestoreapi.com/products')
-      console.log(data);
-      setResults(data);
-      setFilterdata(data)
+     const response= await axios.get('https://fakestoreapi.com/products')
+      console.log(response);
+      setResults(response.data);
+      setFilterdata(response.data)
       setLoading(false);
+      console.log(response.status);
       //setFilterdata(data);{/*i do it disable because it is extra}
        
     }
@@ -35,7 +36,7 @@ function Products() {
   
  
   const renderProduct = results.map((result) => (
-   <motion.div className="card p-4  text-center" key={result.id}
+   <motion.div className="card p-5 text-center" key={result.id}
       onClick={(e) => navigate(`/products/${result.id}`)}//use for navigation  when click on it 
       style={{ width: '18rem',  cursor:'pointer'}}
       whileHover={{
@@ -95,7 +96,7 @@ function Products() {
 
 
   return (
-    <div>
+    <div className='text-align-center'>
       <div className="container my-5 py-5">
         <div className="row">
           <div className="col-12 mb-5">
@@ -109,7 +110,7 @@ function Products() {
      
           {showButton()}
         
-          {loading ? <div>{showLoading()}</div> : <div className=' d-flex flex-row flex-wrap gap-3'>{renderProduct}</div>}
+          {loading ? <div>{showLoading()}</div> : <div className=' d-flex flex-row justify-content-center flex-wrap gap-3'>{renderProduct}</div>}
    
     
         </div>
