@@ -58,8 +58,8 @@ function Login() {
     }
     
     if (!passwordRegex.test(value.password)) {
-      setIsvalid(false);
-    
+      //setIsvalid(false);
+      console.log(isvalid)
       errs.password = t('errorpassword');
     }
     
@@ -68,6 +68,9 @@ function Login() {
   
 
   }
+    
+    
+
   //function for submit form
   const onHandleSubmit = (e) => {
     
@@ -115,7 +118,7 @@ function Login() {
                   <input value={value.email} onChange={(e) => handleChange(e)} name='email' ref={refEmailInput} placeholder={t("Enter your Email")} className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" />
                   <div id="emailHelp" className="form-text">{t("warning")}</div>
                 {/*<!--for warning-->*/}
-                    {errors.email && <div class="alert alert-danger" role="alert">{errors.email}</div>}              
+                    {errors.email && <div className="alert alert-danger" role="alert">{errors.email}</div>}              
                 </div>
                 <div className="mb-3">
                   <label htmlFor="exampleInputPassword1" className="form-label">{t("Password")}</label>
@@ -123,7 +126,7 @@ function Login() {
                   <div id="passwordHelp" className="form-text">
                    {t("message's password")}
                   </div>
-                  {errors.password && <div class="alert alert-danger" role="alert">{errors.password}</div>}              
+                  {errors.password && <div className="alert alert-danger" role="alert">{errors.password}</div>}              
 
                 </div>
                 <div className="mb-3 form-check">
