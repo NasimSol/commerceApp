@@ -2,6 +2,7 @@
 
 const handleCart = (cart = [], action) => {
     const product = action.payload;
+    
     switch (action.type) {
         case "ADDITEM":
             //if exist
@@ -24,7 +25,7 @@ const handleCart = (cart = [], action) => {
         case "DELITEM":
             //if exist
             const exist1 = cart.find((x) => x.id === product.id);
-            console.log(exist1);
+           
             if (exist1.qty === 1) {
                 return cart.filter((x) => x.id !== exist1.id);
                 break;
@@ -32,6 +33,14 @@ const handleCart = (cart = [], action) => {
                 return cart.map((x) => x.id === product.id ? { ...x, qty: x.qty - 1 } : x);
                 break;
             };
+            case "DELALLNUM":
+            //if exist
+            return cart.filter((x) => x.id!==product.id );
+                break;
+            
+               
+               
+           
 
             
         default:
@@ -44,34 +53,4 @@ const handleCart = (cart = [], action) => {
 };
 export default handleCart;
 
-/*
-const handleCart = (cart = [], action) => {
-  
-    switch (action.type) {
-       case "ADDITEM":
-            //if exist
-           
-                return [
-                    ...cart,
-                   action.payload
-                    
-                ]
-            break;
-        case "DELITEM":
-            //if exist
-           
-                return cart.filter((x) => x.id !== action.payload.id);
-            break;
-            default:
-        
-                return cart;
-                break;
-            }
-            
-         
-        
-            
-    }
-   
-    
-*/
+
